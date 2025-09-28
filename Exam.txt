@@ -1,0 +1,197 @@
+Math operation
+
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>Arithmetic Calculator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  
+</head>
+<body>
+
+  <h2>AngularJS Arithmetic Calculator</h2>
+
+  <label>Enter Number A:</label>
+  <input type="number" ng-model="a" />
+
+  <label>Enter Number B:</label>
+  <input type="number" ng-model="b" />
+
+  <div class="result">
+    <p><strong>Addition (a + b):</strong> {{ a + b }}</p>
+    <p><strong>Subtraction (a - b):</strong> {{ a - b }}</p>
+    <p><strong>Multiplication (a * b):</strong> {{ a * b }}</p>
+    <p><strong>Division (a / b):</strong> {{ a / b }}</p>
+  </div>
+
+</body>
+</html>
+
+simple controller
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS Controller Demo</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+<body ng-controller="UserController">
+
+  <h2>User Information</h2>
+
+  <form>
+    <label>Name:</label>
+    <input type="text" ng-model="user.Name" />
+
+  </form>
+
+  <div class="output">
+    <h3>Live Preview:</h3>
+    <p><strong>Hello,</strong> {{ user.Name }}</p>
+  </div>
+
+  <script>
+    // Define AngularJS app and controller
+    angular.module('myApp', [])
+      .controller('UserController', function($scope) {
+        $scope.user = {
+          Name: '',
+        };
+      });
+  </script>
+
+</body>
+</html>
+
+html form
+
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Html Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+<body ng-controller="FormController">
+
+  <h2>Raj Enterprise Inquiry Form</h2>
+
+  <form>
+    <label>First Name:</label>
+    <input type="text" ng-model="formData.firstname" />
+
+    <label>Last Name:</label>
+    <input type="text" ng-model="formData.lastname" />
+
+    <label>Contact Number:</label>
+    <input type="text" ng-model="formData.contact" />
+
+    <label>Date of Birth:</label>
+    <input type="date" ng-model="formData.dob" />
+  </form>
+  <div class="output">
+    <h3>Filtered Output:</h3>
+    <p><strong>First Name (uppercase):</strong> {{ formData.firstname | uppercase }}</p>
+    <p><strong>Last Name (lowercase):</strong> {{ formData.lastname | lowercase }}</p>
+    <p><strong>Contact Number (number):</strong> {{ formData.contact | number }}</p>
+    <p><strong>Date of Birth (formatted):</strong> {{ formData.dob | date:'fullDate' }}</p>
+  </div>
+
+  <script>
+    angular.module('MyApp', [])
+      .controller('FormController', function($scope) {
+        $scope.formData = {
+          firstname: '',
+          lastname: '',
+          contact: '',
+          dob: null
+        };
+      });
+  </script>
+
+</body>
+</html>
+
+
+registration form 
+
+<!DOCTYPE html>
+<html ng-app="registrationApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="RegistrationController">
+
+  <h2>Raj Enterprise Registration Form</h2>
+
+  <form name="regForm">
+    <label>First Name:</label>
+    <input type="text" ng-model="user.firstname" required />
+
+    <label>Last Name:</label>
+    <input type="text" ng-model="user.lastname" required />
+
+    <label>Email:</label>
+    <input type="email" ng-model="user.email" required />
+
+    <label>Website URL:</label>
+    <input type="url" ng-model="user.website" />
+
+    <label>Date of Birth:</label>
+    <input type="date" ng-model="user.dob" />
+
+    <label>Preferred Meeting Date & Time:</label>
+    <input type="datetime-local" ng-model="user.meeting" />
+
+    <label>Preferred Time Slot:</label>
+    <input type="time" ng-model="user.time" />
+
+    <label>Preferred Month:</label>
+    <input type="month" ng-model="user.month" />
+
+    <label>Preferred Week:</label>
+    <input type="week" ng-model="user.week" />
+  </form>
+
+  <div class="output">
+    <h3>Live Preview:</h3>
+    <p><strong>First Name:</strong> {{ user.firstname }}</p>
+    <p><strong>Last Name:</strong> {{ user.lastname }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Website:</strong> {{ user.website }}</p>
+    <p><strong>Date of Birth:</strong> {{ user.dob | date:'fullDate' }}</p>
+    <p><strong>Meeting Date & Time:</strong> {{ user.meeting | date:'medium' }}</p>
+    <p><strong>Time Slot:</strong> {{ user.time }}</p>
+    <p><strong>Month:</strong> {{ user.month }}</p>
+    <p><strong>Week:</strong> {{ user.week }}</p>
+  </div>
+
+  <script>
+    angular.module('registrationApp', [])
+      .controller('RegistrationController', function($scope) {
+        $scope.user = {
+          firstname: '',
+          lastname: '',
+          email: '',
+          website: '',
+          dob: null,
+          meeting: null,
+          time: '',
+          month: '',
+          week: ''
+        };
+      });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
