@@ -1,197 +1,211 @@
-Math operation
+// Prog 31 - Write a Swing program to display simple Login Screen 
+import javax.swing.*; 
+import java.awt.*; 
+public class MyLogin extends JFrame 
+{ 
+JTextField txtName,txtPass; 
+JLabel lblName,lblPass; 
+JButton cmdOk, cmdCancel; 
+MyLogin() 
+{ 
+txtName=new JTextField(20); 
+txtPass=new JTextField(20); 
+lblName=new JLabel("Username : "); 
+lblPass=new JLabel("Password : "); 
+cmdOk=new JButton("OK"); 
+cmdCancel=new JButton("Cancel"); 
+Container con=getContentPane(); 
+con.setLayout(new FlowLayout()); 
+con.add(lblName); 
+con.add(txtName); 
+con.add(lblPass); 
+con.add(cmdOk); 
+con.add(txtPass); 
+con.add(cmdCancel); 
+} 
+public static void main(String args[]) 
+{ 
+MyLogin ml=new MyLogin(); 
+ml.setSize(300,300); 
+ml.setVisible(true);  
+} 
+} 
 
-<!DOCTYPE html>
-<html ng-app>
-<head>
-  <meta charset="UTF-8">
-  <title>Arithmetic Calculator</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+// Prog 32 - Write a Swing program containing a button with the caption "Now" and a 
+//textfield. On click of the button, the current date and time should be displayed in a 
+//textfield? 
+import java.awt.*;  
+import java.awt.event.*; 
+import javax.swing.*;  
+import java.util.*; 
+class mypanel extends JPanel implements ActionListener { 
+     JTextField t1;  
+ JButton b1; 
+     mypanel() { 
+         t1 = new JTextField(25);        
+ b1 = new JButton("Now"); 
+         b1.addActionListener(this);  
+ setLayout(new FlowLayout()); 
+         add(t1);  add(b1); 
+    } 
+    public void actionPerformed(ActionEvent ae) { 
+          if(ae.getSource()==b1) 
+  { 
+              t1.setText(new Date().toString()); 
+          }     
+ }  
+} 
+class DisplayTime extends JFrame { 
+    DisplayTime(){ 
+mypanel m = new mypanel(); 
+setContentPane(m); 
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+setTitle("Display Time"); 
+setSize(300,300); 
+setVisible(true); 
+    } 
+    public static void main(String args[])  { 
+        DisplayTime m = new DisplayTime(); 
+ System.out.println("555-Siddhesh Kadam"); 
+    } 
+} 
+
+//Prog 33 WAP in Swing to display Image in JScrollPane, accept the Image Path from the 
+// user and on click of button display Image 
+import javax.swing.*;import java.awt.*; 
+import java.awt.event.*; 
+public class DisplayImage extends JFrame implements ActionListener{ 
+JTextField txtPath;  
+JLabel lblPath,lblImage;  
+JButton cmdDisplay;  
+JScrollPane jsp; 
+JPanel topPanel; 
+DisplayImage(){ 
+txtPath=new JTextField(20); 
+lblPath=new JLabel("Enter Image Path ");  
+cmdDisplay=new JButton("Display"); 
+cmdDisplay.addActionListener(this); 
+lblImage=new JLabel("Image will be displayed here"); 
+jsp=new JScrollPane(lblImage); 
+topPanel=new JPanel(); 
+Container con=getContentPane(); 
+con.setLayout(new BorderLayout()); 
+topPanel.add(lblPath); topPanel.add(txtPath);    
+topPanel.add(cmdDisplay); 
+con.add(topPanel,BorderLayout.NORTH);  
+con.add(jsp,BorderLayout.CENTER); 
+} 
+public void actionPerformed(ActionEvent ae){ 
+String p=txtPath.getText();  
+ImageIcon img=new ImageIcon(p);  
+lblImage.setText(""); 
+lblImage.setIcon(img); 
+} 
+public static void main(String args[]){ 
+DisplayImage ml=new DisplayImage(); 
+ml.setTitle("Display Image"); 
+ml.setSize(500,600);   
+ml.setVisible(true); 
+ml.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
+System.out.println("555-Siddhesh Kadam"); 
+} 
+} 
+
+
+//Prog 34 WAP to demonstrate Calculator App 
+import javax.swing.*;  import java.awt.*;  import java.awt.event.*; 
+public class MyCalculator extends JFrame implements ActionListener 
+{ 
+  JTextField txtfirstno,txtsecondno,txtanswer; 
+  JButton add,sub,mul,div; 
+  JLabel lblfirstno,lblsecondno,lblanswer; 
+  MyCalculator() 
+  { 
+     txtfirstno = new JTextField(20); 
+     txtsecondno = new JTextField(20); 
+     txtanswer = new JTextField(20); 
+     txtanswer.setEnabled(false); 
+     add = new JButton("Add"); add.addActionListener(this); 
+     sub = new JButton("Sub"); sub.addActionListener(this); 
+     mul = new JButton("Mul"); mul.addActionListener(this); 
+     div = new JButton("Div"); div.addActionListener(this); 
+     lblfirstno = new JLabel("First No"); 
+     lblsecondno = new JLabel("Second No"); 
+     lblanswer = new JLabel("Answer"); 
+     Container con= getContentPane(); 
+     con.setLayout(new FlowLayout()); 
+     con.add(lblfirstno);  con.add(txtfirstno); 
+     con.add(lblsecondno);  con.add(txtsecondno); 
+     con.add(lblanswer);   con.add(txtanswer); 
+     con.add(add);  con.add(sub); 
+     con.add(mul);  con.add(div); 
+  } 
+public void actionPerformed(ActionEvent ae){ 
+ int no1=Integer.parseInt(txtfirstno.getText());  
+ int no2=Integer.parseInt(txtsecondno.getText()); 
+ if(ae.getSource()==add) txtanswer.setText(""+(no1+no2)); 
+ if(ae.getSource()==sub) txtanswer.setText(""+(no1-no2)); 
+ if(ae.getSource()==mul) txtanswer.setText(""+(no1*no2)); 
+ if(ae.getSource()==div) txtanswer.setText(""+(no1/no2)); 
+} 
+public static void main(String args[]){ 
+ MyCalculator mc = new MyCalculator(); 
+    mc.setTitle("Display Calulator"); 
+    mc.setSize(280,280); 
+    mc.setVisible(true); 
+ mc.setDefaultCloseOperation(DISPOSE_ON_CLOSE);  
+}  
+} 
+
+//Prog 35 WAP to demonstrate Pizza Application 
+import java.awt.*; 
+import java.awt.event.*; 
+import javax.swing.*; 
+public class PizzaApp extends JFrame 
+{ 
+   JLabel lblname,lblmobileno,lblcrust,lbldelivery,lbltoppings; 
+   JTextField txtname,txtmobileno; 
+   JRadioButton optthin,optthick; 
+   JComboBox cmddelivery; 
+   JCheckBox chkolives,chkonion,chkcapscicum,chkpaneer,chkchicken; 
+   JPanel p1,p2,p3,p4,p5;  
+   PizzaApp() 
+   { 
+       lblname=new JLabel("Name");  txtname=new JTextField(20); 
+ lblmobileno=new JLabel("Mobile");  txtmobileno=new JTextField(20); 
+lblcrust=new JLabel("Crust Type"); 
+optthin=new JRadioButton("Thin"); optthick=new JRadioButton("Thick"); 
+       lbldelivery=new JLabel("Delivery Type"); 
+       cmddelivery=new JComboBox(); 
+ cmddelivery.addItem("Eat In");  cmddelivery.addItem("Take Away"); 
+       lbltoppings=new JLabel("Toppings"); 
+chkolives=new JCheckBox("Olives");  chkonion=new JCheckBox("Onion"); 
+chkcapscicum=new JCheckBox("Capsicum"); chkpaneer=new JCheckBox("Paneer"); 
+chkchicken=new JCheckBox("Chicken"); 
+ 
+ p1= new JPanel(new FlowLayout()); p2= new JPanel(new FlowLayout()); 
+ p3= new JPanel(new FlowLayout()); p4= new JPanel(new FlowLayout()); 
+ p5= new JPanel(new FlowLayout()); 
+ 
+ Container con=getContentPane(); 
+ con.setLayout(new GridLayout(5,1)); 
+ con.add(p1);con.add(p2);con.add(p3);con.add(p4);con.add(p5); 
+ p1.add(lblname); p1.add(txtname); 
+ p2.add(lblmobileno); p2.add(txtmobileno); 
+ p3.add(lblcrust); p3.add(optthin); p3.add(optthick); 
+ p4.add(lbldelivery); p4.add(cmddelivery);  
+ p5.add(lbltoppings);  
+ p5.add(chkolives);p5.add(chkonion);p5.add(chkcapscicum); 
+ p5.add(chkpaneer);p5.add(chkchicken); 
+   } 
+public static void main(String args[]){ 
+ PizzaApp mc = new PizzaApp(); 
+    mc.setTitle("PIZZA APPLICATION"); mc.setSize(400,280); mc.setVisible(true); 
+ mc.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
+}} 
+ 
+
+ 
+ 
   
-</head>
-<body>
-
-  <h2>AngularJS Arithmetic Calculator</h2>
-
-  <label>Enter Number A:</label>
-  <input type="number" ng-model="a" />
-
-  <label>Enter Number B:</label>
-  <input type="number" ng-model="b" />
-
-  <div class="result">
-    <p><strong>Addition (a + b):</strong> {{ a + b }}</p>
-    <p><strong>Subtraction (a - b):</strong> {{ a - b }}</p>
-    <p><strong>Multiplication (a * b):</strong> {{ a * b }}</p>
-    <p><strong>Division (a / b):</strong> {{ a / b }}</p>
-  </div>
-
-</body>
-</html>
-
-simple controller
-
-<!DOCTYPE html>
-<html ng-app="myApp">
-<head>
-  <meta charset="UTF-8">
-  <title>AngularJS Controller Demo</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  </head>
-<body ng-controller="UserController">
-
-  <h2>User Information</h2>
-
-  <form>
-    <label>Name:</label>
-    <input type="text" ng-model="user.Name" />
-
-  </form>
-
-  <div class="output">
-    <h3>Live Preview:</h3>
-    <p><strong>Hello,</strong> {{ user.Name }}</p>
-  </div>
-
-  <script>
-    // Define AngularJS app and controller
-    angular.module('myApp', [])
-      .controller('UserController', function($scope) {
-        $scope.user = {
-          Name: '',
-        };
-      });
-  </script>
-
-</body>
-</html>
-
-html form
-
-<!DOCTYPE html>
-<html ng-app="MyApp">
-<head>
-  <meta charset="UTF-8">
-  <title>Html Form</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-  </head>
-<body ng-controller="FormController">
-
-  <h2>Raj Enterprise Inquiry Form</h2>
-
-  <form>
-    <label>First Name:</label>
-    <input type="text" ng-model="formData.firstname" />
-
-    <label>Last Name:</label>
-    <input type="text" ng-model="formData.lastname" />
-
-    <label>Contact Number:</label>
-    <input type="text" ng-model="formData.contact" />
-
-    <label>Date of Birth:</label>
-    <input type="date" ng-model="formData.dob" />
-  </form>
-  <div class="output">
-    <h3>Filtered Output:</h3>
-    <p><strong>First Name (uppercase):</strong> {{ formData.firstname | uppercase }}</p>
-    <p><strong>Last Name (lowercase):</strong> {{ formData.lastname | lowercase }}</p>
-    <p><strong>Contact Number (number):</strong> {{ formData.contact | number }}</p>
-    <p><strong>Date of Birth (formatted):</strong> {{ formData.dob | date:'fullDate' }}</p>
-  </div>
-
-  <script>
-    angular.module('MyApp', [])
-      .controller('FormController', function($scope) {
-        $scope.formData = {
-          firstname: '',
-          lastname: '',
-          contact: '',
-          dob: null
-        };
-      });
-  </script>
-
-</body>
-</html>
-
-
-registration form 
-
-<!DOCTYPE html>
-<html ng-app="registrationApp">
-<head>
-  <meta charset="UTF-8">
-  <title>Registration Form</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-</head>
-<body ng-controller="RegistrationController">
-
-  <h2>Raj Enterprise Registration Form</h2>
-
-  <form name="regForm">
-    <label>First Name:</label>
-    <input type="text" ng-model="user.firstname" required />
-
-    <label>Last Name:</label>
-    <input type="text" ng-model="user.lastname" required />
-
-    <label>Email:</label>
-    <input type="email" ng-model="user.email" required />
-
-    <label>Website URL:</label>
-    <input type="url" ng-model="user.website" />
-
-    <label>Date of Birth:</label>
-    <input type="date" ng-model="user.dob" />
-
-    <label>Preferred Meeting Date & Time:</label>
-    <input type="datetime-local" ng-model="user.meeting" />
-
-    <label>Preferred Time Slot:</label>
-    <input type="time" ng-model="user.time" />
-
-    <label>Preferred Month:</label>
-    <input type="month" ng-model="user.month" />
-
-    <label>Preferred Week:</label>
-    <input type="week" ng-model="user.week" />
-  </form>
-
-  <div class="output">
-    <h3>Live Preview:</h3>
-    <p><strong>First Name:</strong> {{ user.firstname }}</p>
-    <p><strong>Last Name:</strong> {{ user.lastname }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Website:</strong> {{ user.website }}</p>
-    <p><strong>Date of Birth:</strong> {{ user.dob | date:'fullDate' }}</p>
-    <p><strong>Meeting Date & Time:</strong> {{ user.meeting | date:'medium' }}</p>
-    <p><strong>Time Slot:</strong> {{ user.time }}</p>
-    <p><strong>Month:</strong> {{ user.month }}</p>
-    <p><strong>Week:</strong> {{ user.week }}</p>
-  </div>
-
-  <script>
-    angular.module('registrationApp', [])
-      .controller('RegistrationController', function($scope) {
-        $scope.user = {
-          firstname: '',
-          lastname: '',
-          email: '',
-          website: '',
-          dob: null,
-          meeting: null,
-          time: '',
-          month: '',
-          week: ''
-        };
-      });
-  </script>
-
-</body>
-</html>
-
-
-
-
-
-
