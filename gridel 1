@@ -1,0 +1,224 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.example.practical2_60"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "androidx.test:core:1.4.0"
+}
+
+
+Code :  
+1) If else  
+fun main() 
+{ 
+val age:Int = 10 
+if (age > 18)  
+{ 
+print("Adult") 
+} else 
+{ 
+print("Minor") 
+} 
+} 
+2)if else if 
+fun main(){ 
+val age:Int = 13 
+val result = if (age > 19) { 
+"Adult" 
+} else if ( age > 12 && age < 20 ){ 
+Kirti M. Doongursee College                                                                                                                                                        
+Roll No                                                                                   
+SYBscCS                                                                                      3                                                                                                    AAD 
+ 
+  
+Kirti M. Doongursee College                                                                                                                                                        Roll No                                                                                   
+ 
+ 
+ "Teen" 
+ } else { 
+ "Minor" 
+ } 
+ print("The value of result : ") 
+ print(result) 
+} 
+ 
+3.1) when exp 
+fun main() { 
+ val day = 2 
+ val result = when (day)  
+{ 
+ 1 -> "Monday" 
+ 2 -> "Tuesday" 
+ 3 -> "Wednesday" 
+ 4 -> "Thursday" 
+ 5 -> "Friday" 
+ 6 -> "Saturday" 
+ 7 -> "Sunday" 
+ else -> "Invalid day." 
+ } 
+ println(result) 
+} 
+ 
+3.2)when exp 
+fun main() { 
+ val day = 'r' 
+ val result = when (day) { 
+ 'a' -> "Monday" 
+ 'b' -> "Tuesday" 
+ 'c' -> "Wednesday" 
+ 'd' -> "Thursday" 
+ 'e' -> "Friday" 
+ 'f' -> "Saturday" 
+SYBscCS                                                                                      4                                                                                                    AAD 
+ 
+  
+Kirti M. Doongursee College                                                                                                                                                        Roll No                                                                                   
+ 
+ 
+ 'g' -> "Sunday" 
+ else -> "Invalid day." 
+ } 
+ println(result) 
+} 
+ 
+3.3)combine when exp 
+fun main() { 
+ val day = 2 
+ when (day) { 
+ 1, 2, 3, 4, 5 -> print("Weekday") 
+ else -> print("Weekend") 
+ } 
+} 
+ 
+4) for loop 
+fun main() { 
+ var subject = arrayOf("APP", "STATS", "DM", "ECOM") 
+ for (a in subject) { 
+ println(a) 
+ } 
+} 
+ 
+5)while loop 
+fun main() { 
+ var i = 5; 
+ while (i > 0) { 
+ println(i) 
+ i-- //decrement i 
+ } 
+} 
+ 
+6) do while loop 
+fun main() { 
+ var i =5 
+SYBscCS                                                                                      
+5                                                                                                    
+AAD 
+do{ 
+println(i) 
+i-- //decrement i 
+}while(i > 0) 
+} 
+2a) Class & Object creation 
+class Car(val make: String, val model: String, var year: Int) { 
+fun startEngine() { 
+println("The engine of $make $model is started.") 
+} 
+} 
+fun main() { 
+val myCar = Car("Toyota", "Corolla", 2021) 
+myCar.startEngine()   
+} 
+2b)inheritance 
+open class Vehicle(val make: String, val model: String) { 
+open fun displayInfo() { 
+println("Vehicle Make: $make, Model: $model") 
+} 
+} 
+class Car(make: String, model: String, val year: Int) : Vehicle(make, model) { 
+override fun displayInfo() { 
+println("Car Make: $make, Model: $model, Year: $year") 
+} 
+} 
+fun main() { 
+val myCar = Car("Toyota", "Corolla", 2021) 
+myCar.displayInfo()  // Calling overridden method 
+} 
+2c) polymorphism 
+open class Animal { 
+Kirti M. Doongursee College                                                                                                                                                        
+Roll No                                                                      
+SYBscCS                                                                                      6                                                                                                    AAD 
+ 
+   open fun sound() { 
+        println("Animal makes a sound") 
+    } 
+} 
+class Dog : Animal() { 
+    override fun sound() { 
+        println("Dog barks") 
+    } 
+} 
+fun main() { 
+    val myAnimal: Animal = Dog() 
+    myAnimal.sound()  // Calls the Dog's sound method 
+ 
+2d)Encapsulation 
+class Person(private var name: String, private var age: Int) { 
+    fun getName(): String { 
+        return name 
+    } 
+    fun setName(newName: String) { 
+        name = newName 
+    } 
+    fun getAge(): Int { 
+        return age 
+    } 
+    fun setAge(newAge: Int) { 
+        if (newAge > 0) { 
+            age = newAge 
+        } } } 
+fun main() { 
+    val person = Person("John", 25) 
+    println(person.getName()) // John 
+    person.setName("Alice") 
+    println(person.getName()) // Alice 
+} 
+}
+Kirti M. Doongursee College                                                                                                                                                        Roll No      
