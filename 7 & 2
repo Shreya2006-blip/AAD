@@ -1,0 +1,158 @@
+7
+package com.example.practical7_60
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.media.MediaPlayer
+import android.widget.Button
+import android.view.View
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val mediaplayer: MediaPlayer =
+            MediaPlayer.create(applicationContext, R.raw.india)
+
+        val bplay = findViewById<Button>(R.id.b1)
+        val bpause = findViewById<Button>(R.id.b2)
+        val bstop = findViewById<Button>(R.id.b3)
+
+        bplay.setOnClickListener()
+        { it: View ->
+            mediaplayer.start()
+        }
+
+        bpause.setOnClickListener()
+        { it: View ->
+            mediaplayer.pause()
+        }
+
+        bstop.setOnClickListener()
+        { it: View ->
+            mediaplayer.stop()
+            mediaplayer.prepare()
+        }
+    }
+}
+
+2 vertical:
+package com.example.practical2_60
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import android.view.View
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val text1 = findViewById<EditText>(R.id.e1)
+        val text2 = findViewById<EditText>(R.id.e2)
+        val button = findViewById<Button>(R.id.b1)
+
+        button.setOnClickListener({
+            { it: View ->
+                if (text1.text.toString().isEmpty() || text2.text.toString().isEmpty())
+                {
+                    Toast.makeText(applicationContext, "Enter the Data", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    Toast.makeText(this, "Name = ${text1.text}\nPassword = ${text2.text}",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+    }
+}
+
+2 horizontal:
+package com.example.practical02
+
+import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val text1 = findViewById<EditText>(R.id.e1)
+        val button1 = findViewById<Button>(R.id.b1)
+        val button2 = findViewById<Button>(R.id.b2)
+
+        button1.setOnClickListener()
+        {
+            if (text1.text.toString().isEmpty()) {
+                Toast.makeText(applicationContext, "Enter the Data", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Name = ${text1.text}", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        button2.setOnClickListener()
+        {
+            text1.text.clear()
+        }
+    }
+}
+
+2 relative:
+package com.example.practical2
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
+import android.view.View
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val button1 = findViewById<Button>(R.id.b1)
+        val button2 = findViewById<Button>(R.id.b2)
+        val button3 = findViewById<Button>(R.id.b3)
+        val button4 = findViewById<Button>(R.id.b4)
+        val button5 = findViewById<Button>(R.id.b5)
+
+        button1.setOnClickListener()
+        { it: View ->
+            Toast.makeText(applicationContext, "TopLeft button is clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        button2.setOnClickListener()
+        { it: View ->
+            Toast.makeText(applicationContext, "TopRight button is clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        button3.setOnClickListener()
+        { it: View ->
+            Toast.makeText(applicationContext, "BottomLeft button is clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        button4.setOnClickListener()
+        { it: View ->
+            Toast.makeText(applicationContext, "BottomRight button is clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        button5.setOnClickListener()
+        { it: View ->
+            Toast.makeText(applicationContext, "Center button is clicked", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+
+
