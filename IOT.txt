@@ -1,0 +1,123 @@
+PrNo1
+int R=5;
+int G=6;
+int B=7;
+int dt=900;
+void setup()
+{
+pinMode(R, OUTPUT);
+pinMode(G, OUTPUT);
+pinMode(B, OUTPUT);
+}
+void loop()
+{
+digitalWrite(R, HIGH);
+delay(dt);
+digitalWrite(R, LOW);
+delay(dt);
+digitalWrite(G, HIGH);
+delay(dt);
+digitalWrite(G, LOW);
+delay(dt);
+digitalWrite(B, HIGH);
+delay(dt);
+digitalWrite(B, LOW);
+delay(dt);
+}  
+
+PrNo2
+int ldr=A3;
+int bulb=7;
+void setup()
+{
+pinMode(bulb,OUTPUT);
+pinMode(ldr,INPUT);
+}
+void loop()
+{
+if(analogRead(ldr)>500)
+digitalWrite(bulb,0);
+else
+digitalWrite(bulb,1);
+}
+
+PrNo3
+int val=A0;
+int Speaker=10;
+void setup()
+{
+pinMode(10,OUTPUT);
+pinMode(A0,INPUT);
+}
+void loop()
+{
+val=analogRead(A0);
+if(val>500)
+{
+digitalWrite(10,LOW);
+noTone(Speaker);
+}
+else
+{
+digitalWrite(10,HIGH);
+tone(Speaker,600);
+}
+}
+
+PrNo4
+int pir=3, led=13;
+
+void setup ()
+  
+{
+
+pinMode (pir, INPUT);
+pinMode(led, OUTPUT);
+}
+void loop()
+{
+  int pir_val=digitalRead(pir);
+  if(pir_val==HIGH)
+  {
+    digitalWrite(led, HIGH);
+  }
+  else
+  {
+  digitalWrite(led,LOW);
+  }
+}
+  
+PrNo5
+int const trigPin = 10;
+int const echoPin = 11;
+int const buzzPin = 2;
+
+void setup()
+{
+ pinMode (trigPin, OUTPUT);
+ pinMode (echoPin, INPUT);
+ pinMode (buzzPin, OUTPUT);
+}
+void loop()
+{
+int duration,distance;
+  
+digitalWrite(trigPin, HIGH);
+delay(1);
+  
+digitalWrite(trigPin, LOW);
+  
+duration=pulseIn(echoPin, HIGH);
+delay(1);
+distance =(duration/2)/29.1;
+  
+if(distance<=50&&distance>=0)
+{
+digitalWrite(buzzPin, HIGH);
+}
+else
+{
+digitalWrite(buzzPin, LOW);
+}
+delay(60);
+}
