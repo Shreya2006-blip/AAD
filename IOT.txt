@@ -1,92 +1,3 @@
-PrNo1
-int R=5;
-int G=6;
-int B=7;
-int dt=900;
-void setup()
-{
-pinMode(R, OUTPUT);
-pinMode(G, OUTPUT);
-pinMode(B, OUTPUT);
-}
-void loop()
-{
-digitalWrite(R, HIGH);
-delay(dt);
-digitalWrite(R, LOW);
-delay(dt);
-digitalWrite(G, HIGH);
-delay(dt);
-digitalWrite(G, LOW);
-delay(dt);
-digitalWrite(B, HIGH);
-delay(dt);
-digitalWrite(B, LOW);
-delay(dt);
-}  
-
-PrNo2
-int ldr=A3;
-int bulb=7;
-void setup()
-{
-pinMode(bulb,OUTPUT);
-pinMode(ldr,INPUT);
-}
-void loop()
-{
-if(analogRead(ldr)>500)
-digitalWrite(bulb,0);
-else
-digitalWrite(bulb,1);
-}
-
-PrNo3
-int val=A0;
-int Speaker=10;
-void setup()
-{
-pinMode(10,OUTPUT);
-pinMode(A0,INPUT);
-}
-void loop()
-{
-val=analogRead(A0);
-if(val>500)
-{
-digitalWrite(10,LOW);
-noTone(Speaker);
-}
-else
-{
-digitalWrite(10,HIGH);
-tone(Speaker,600);
-}
-}
-
-PrNo4
-int pir=3, led=13;
-
-void setup ()
-  
-{
-
-pinMode (pir, INPUT);
-pinMode(led, OUTPUT);
-}
-void loop()
-{
-  int pir_val=digitalRead(pir);
-  if(pir_val==HIGH)
-  {
-    digitalWrite(led, HIGH);
-  }
-  else
-  {
-  digitalWrite(led,LOW);
-  }
-}
-  
 PrNo5
 int const trigPin = 10;
 int const echoPin = 11;
@@ -120,4 +31,131 @@ else
 digitalWrite(buzzPin, LOW);
 }
 delay(60);
+
+}
+
+PrNo 6
+int potpin=A0;
+int buzpin=11;
+int val=A0;
+int temperatureC;
+
+void setup()
+{ 
+  pinMode (buzpin, OUTPUT);
+  Serial.begin(9600);
+ 
+}
+void loop()
+
+{
+ val=analogRead(potpin);
+ float voltage=val*5/1023.5;
+ Serial.print(voltage);
+  
+ Serial.println("voltage");
+  
+ float temperatureC=(voltage-0.5)*100;
+ Serial.print(temperatureC);
+ Serial.println("C");
+  
+if(temperatureC>30)
+{analogWrite(buzpin, HIGH);
+ delay(500); }
+  
+else
+{analogWrite(buzpin, LOW);
+ delay(500); }
+}
+
+PrNo 7
+#include <Servo.h>
+
+Servo sermo;
+
+void setup()
+{
+  sermo.attach(7);
+}
+
+void loop()
+{
+  int position[] = {45, 60, 90,180};
+  
+  for (int i = 0; i < 4; i++)
+  {
+    sermo.write(position[i]);
+    delay(1000);
+  }
+}
+
+PrNo8
+byte led;
+int joystick;
+
+void setup() {
+  
+  for (byte n = 2; n < 13; n++) {
+    pinMode(n, OUTPUT);
+  }
+  Serial.begin(115200);
+}
+
+void loop() {
+  joystick = analogRead(A0);
+
+  Serial.println(joystick);
+
+  led = map(joystick, 0, 1023, 2, 12);
+
+  digitalWrite(led, HIGH);
+  delay(10);
+  digitalWrite(led, LOW);
+}
+
+PrNo 9
+int moisture = 0;
+
+void setup() {
+  pinMode(A0, OUTPUT);
+  pinMode(A1, INPUT);
+  Serial.begin(9600);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(12, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(A0, HIGH);
+  delay(10);
+  moisture = analogRead(A1);
+  Serial.println(moisture);
+
+  digitalWrite(8, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(10, LOW);
+  digitalWrite(11, LOW);
+  digitalWrite(12, LOW);
+
+  if (moisture < 200) {
+  }
+  else if (moisture < 400) {
+    digitalWrite(12, HIGH);
+  }
+  else if (moisture < 600) {
+    digitalWrite(11, HIGH);
+  }
+  else if (moisture < 800) {
+    digitalWrite(10, HIGH);
+  }
+  else if (moisture < 1000) {
+    digitalWrite(9, HIGH);
+  }
+  else {
+    digitalWrite(8, HIGH);
+  }
+
+  delay(100);
 }
